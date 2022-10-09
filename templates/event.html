@@ -15,7 +15,7 @@
 <div>
     <p>STUDY.win</p>
     <h1>イベント管理</h1>
-    <p><span>予定や目標を追加</p>
+    <p>予定や目標を追加</p>
 </div>
 
 <button id="openEventButton" onclick="displayBlockAddEventDiv()"
@@ -35,7 +35,7 @@
 
 {% for tasks in task %}
 <div>
-    <small>No. {{ tasks.id }} | {{ tasks.userName }}</small>
+    <small>No. {{ tasks.id }}</small>
     <p><b>{{ tasks.taskTitle }}</b></p>
     <small>{{ tasks.taskDetail }}</small>
     <br><br>
