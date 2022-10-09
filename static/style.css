@@ -1,0 +1,8 @@
+/* <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> で接続します。 */
+
+#addEventDiv, #closeEventButton {
+    display: none;
+}
+section {
+    text-align: right;
+}

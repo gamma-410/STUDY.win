@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<g-card-m>
+    <p>{{ msg | replace("\n", "<br>") | safe}}</p>
+</g-card-m>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div>
+    <p>STUDY.win</p>
+    <h1>ようこそ！</h1>
+    <p><a href="/login">ログインはこちらから</a></p>
+</div>
+
+<div>
+    <p>新規登録</p>
+    <small>登録後はユーザー名を変更できません。</small>
+    <form action="/setup" method="POST">
+        <input name="userName" type="text" placeholder="ユーザー名">
+        <input name="password" type="password" placeholder="パスワード">
+        <section>
+            <input type="submit" value="アカウント作成">
+        </section>
+    </form>
+</div>
+
+<brbox>
+    <br>
+</brbox>
+
+{% endblock %}

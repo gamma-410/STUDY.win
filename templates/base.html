@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,1,200" />
+    <link href="https://gamma-410.github.io/G-CORE/v3.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>STUDY.win</title>
+</head>
+<body>
+    <header>
+        <h1>STUDY.win</h1>
+        <p>ver 1.0</p>
+    </header>
+    
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    <menu>
+        {% if current_user.is_anonymous %}
+        <a href="/"><span class="material-symbols-rounded">home</span></a>
+        <a href="/login"><span class="material-symbols-rounded">login</span></a>
+        {% else %}
+        <a href="/event"><span class="material-symbols-rounded">event</span></a>
+        <a href="#"><span class="material-symbols-rounded">timer</span></a>
+        <a href="#"><span class="material-symbols-rounded">library_books</span></a>
+        <a href="/logout"><span class="material-symbols-rounded">logout</span></a>
+        {% endif %}
+    </menu>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

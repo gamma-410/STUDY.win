@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<g-card-s>
+    <p>{{ msg }}</p>
+</g-card-s>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div>
+    <p>STUDY.win</p>
+    <h1>イベント管理</h1>
+    <p><span>予定や目標を追加</p>
+</div>
+
+<button id="openEventButton" onclick="displayBlockAddEventDiv()"
+    class="material-symbols-rounded">calendar_add_on</button>
+<button id="closeEventButton" onclick="displayNoneAddEventDiv()" class="material-symbols-rounded">close</button>
+
+<div id="addEventDiv">
+    <p>新規作成</p>
+    <form action="/event" method="POST">
+        <input name="taskTitle" type="text" placeholder="タイトル">
+        <textarea name="taskDetail" placeholder="詳細" rows="3"></textarea>
+        <section>
+            <input type="submit" value="追加する">
+        </section>
+    </form>
+</div>
+
+{% for tasks in task %}
+<div>
+    <small>No. {{ tasks.id }} | {{ tasks.userName }}</small>
+    <p><b>{{ tasks.taskTitle }}</b></p>
+    <small>{{ tasks.taskDetail }}</small>
+    <br><br>
+    <section>
+        <a href="/done/{{ tasks.id }}"><button class="material-symbols-rounded">done</button></a>
+        <a href="/delete/{{ tasks.id }}"><button class="material-symbols-rounded">delete</button></a>
+    </section>
+</div>
+{% endfor %}
+
+<brbox>
+    <br>
+</brbox>
+
+{% endblock %}

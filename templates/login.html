@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<g-card-m>
+    <p>{{ msg | replace("\n", "<br>") | safe}}</p>
+</g-card-m>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div>
+    <p>STUDY.win</p>
+    <h1>お帰りなさい！</h1>
+    <p><a href="/setup">新規登録はこちらから</a></p>
+</div>
+
+<div>
+    <p>ログイン</p>
+    <form action="/login" method="POST">
+        <input name="userName" type="text" placeholder="ユーザー名">
+        <input name="password" type="password" placeholder="パスワード">
+        <section>
+            <input type="submit" value="ログイン">
+        </section>
+    </form>
+</div>
+
+<brbox>
+    <br>
+</brbox>
+
+{% endblock %}
