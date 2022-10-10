@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<g-card-s>
+    <p>{{ msg }}</p>
+</g-card-s>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div>
+    <br>
+    <h2 id="title">勉強タイマー</h2>
+    <p id="subtitle">時間になったら音でお知らせします。</p>
+    <br>
+    <box id="box">
+        <p id="displayHour">0 時間</p>
+        <input value="0" id="hour" type="range" min="0" max="99" onchange="changeHour()">
+
+        <p id="displayMin">0 分</p>
+        <input value="0" id="min" type="range" min="0" max="59" onchange="changeMin()">
+
+        <p id="displaySec">0 秒</p>
+        <input value="0" id="sec" type="range" min="0" max="59" onchange="changeSec()">
+
+        <br><br>
+        <section>
+            <button class="material-symbols-rounded" onclick="startTimer()">play_arrow</button>
+        </section>
+    </box>
+</div>
+
+<audio id="btn_audio">
+    <source src="{{ url_for('static', filename='ugis.mp3') }}" type="audio/mp3">
+</audio>
+
+<brbox>
+    <br>
+</brbox>
+
+{% endblock %}

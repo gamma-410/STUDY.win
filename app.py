@@ -142,5 +142,9 @@ def deleteEvent(id):
   flash("イベントを削除しました！")
   return redirect('/event')
 
+@app.route('/timer')
+def timer():
+  return render_template('timer.html')
+
 if __name__ == "__main__":
   app.run(debug=True)

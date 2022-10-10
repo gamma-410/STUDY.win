@@ -12,19 +12,13 @@
 {% endif %}
 {% endwith %}
 
-<div>
-    <p>STUDY.win</p>
-    <h1>イベント管理</h1>
-    <p>予定や目標を追加</p>
-</div>
-
 <button id="openEventButton" onclick="displayBlockAddEventDiv()"
     class="material-symbols-rounded">calendar_add_on</button>
 <button id="closeEventButton" onclick="displayNoneAddEventDiv()" class="material-symbols-rounded">close</button>
 
 <div id="addEventDiv">
-    <p>新規作成</p>
-    <form action="/event" method="POST">
+    <p>新規イベント作成</p>
+    <form action="/event" method="POST" autocomplete="off">
         <input name="taskTitle" type="text" placeholder="タイトル">
         <textarea name="taskDetail" placeholder="詳細" rows="3"></textarea>
         <section>
@@ -36,8 +30,8 @@
 {% for tasks in task %}
 <div>
     <small>No. {{ tasks.id }}</small>
-    <p><b>{{ tasks.taskTitle }}</b></p>
-    <small>{{ tasks.taskDetail }}</small>
+    <h2>{{ tasks.taskTitle }}</h2>
+    <p>{{ tasks.taskDetail }}</p>
     <br><br>
     <section>
         <a href="/done/{{ tasks.id }}"><button class="material-symbols-rounded">done</button></a>
